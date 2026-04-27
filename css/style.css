@@ -1,0 +1,964 @@
+/* =========================================================
+   Design tokens / shared sizing
+   ========================================================= */
+:root {
+  --container-width: 936px;
+  --header-height: 88px;
+  --hero-height: 102px;
+
+  --section-gap: 16px;
+  --header-row-gap: 25px;
+
+  --your-tests-height: 285px;
+  --practice-height: 320px;
+  --explore-height: 360px;
+
+  --empty-card-width: 450px;
+  --empty-card-height: 170px;
+  --practice-card-width: 240px;
+  --practice-card-height: 210px;
+  --bigfuture-card-height: 210px;
+  --bigfuture-image-column: 290px;
+
+  --card-radius: 12px;
+  --page-bg: #ffffff;
+  --text-dark: #151d2a;
+  --link-blue: #1848b6;
+  --hero-bg: #edf3ff;
+  --hero-text: #355db7;
+  --segment-active: #4b5058;
+  --card-shadow: 0 1px 7px rgba(20, 25, 35, 0.12);
+}
+
+/* =========================================================
+   Base / reset
+   ========================================================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--page-bg);
+  color: var(--text-dark);
+}
+
+/* Shared page-width wrappers */
+.header-inner,
+.welcome-inner,
+.main-content {
+  width: min(var(--container-width), calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* =========================================================
+   Header (fixed top bar)
+   ========================================================= */
+.top-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  height: var(--header-height);
+  background: var(--hero-bg);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.brand-logo {
+  display: block;
+  width: 128px;
+  height: auto;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-name {
+  font-size: 19px;
+  line-height: 1.1;
+  font-weight: 600;
+  color: #111111;
+}
+
+.user-avatar {
+  display: block;
+  width: 26px;
+  height: 26px;
+}
+
+/* =========================================================
+   Hero / welcome band
+   ========================================================= */
+.welcome-band {
+  width: 100%;
+  min-height: var(--hero-height);
+  margin-top: var(--header-height);
+  background: var(--hero-bg);
+}
+
+.welcome-inner {
+  display: flex;
+  align-items: center;
+  min-height: var(--hero-height);
+}
+
+.welcome-inner h1 {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.15;
+  font-weight: 400;
+  color: var(--hero-text);
+  opacity: 0.9;
+}
+
+/* =========================================================
+   Main content sections
+   ========================================================= */
+.main-content {
+  margin: 22px auto 70px;
+}
+
+.content-section {
+  margin-bottom: var(--section-gap);
+}
+
+.your-tests-section {
+  min-height: var(--your-tests-height);
+}
+
+.practice-section {
+  min-height: var(--practice-height);
+}
+
+.explore-section {
+  min-height: var(--explore-height);
+}
+
+/* Section header row (title + segmented control + helper link) */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--header-row-gap);
+  margin-bottom: 22px;
+}
+
+.section-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  color: #141d2b;
+}
+
+/* =========================================================
+   Segmented controls
+   ========================================================= */
+.segmented-control {
+  display: inline-flex;
+  align-items: center;
+  width: 175px;
+  height: 35px;
+  overflow: hidden;
+  border: 1px solid #afb7c3;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.segment {
+  flex: 1 1 0;
+  min-height: 35px;
+  padding: 0 14px;
+  border: 0;
+  background: transparent;
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 600;
+  color: #252b37;
+  cursor: pointer;
+}
+
+.segment + .segment {
+  border-left: 1px solid #c4cad4;
+}
+
+.segment.is-active {
+  background: var(--segment-active);
+  color: #ffffff;
+}
+
+/* Helper links in section headers */
+.helper-link {
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--link-blue);
+  text-decoration: underline;
+}
+
+/* =========================================================
+   Shared card styles
+   ========================================================= */
+.card {
+  background: #ffffff;
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+
+/* =========================================================
+   Your Tests: empty-state card
+   ========================================================= */
+.empty-card {
+  width: min(100%, var(--empty-card-width));
+  min-height: var(--empty-card-height);
+  padding: 31px 28px 24px;
+  text-align: center;
+}
+
+.empty-card h3 {
+  margin: 0 0 12px;
+  font-size: 21px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.empty-card p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.empty-card strong {
+  font-weight: 700;
+  color: #111111;
+}
+
+.empty-card a {
+  font-weight: 600;
+  color: var(--link-blue);
+  text-decoration: underline;
+}
+
+/* =========================================================
+   Practice cards
+   ========================================================= */
+.practice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, var(--practice-card-width));
+  gap: 16px;
+}
+
+.practice-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: var(--practice-card-width);
+  height: var(--practice-card-height);
+  padding: 14px 10px 12px;
+  text-align: center;
+}
+
+.card-icon {
+  display: block;
+  width: 74px;
+  height: auto;
+  margin: 0 auto 18px;
+}
+
+.practice-card h3 {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.12;
+  color: #11151f;
+}
+
+/* =========================================================
+   Explore BigFuture card
+   ========================================================= */
+.section-header-simple {
+  margin-bottom: 16px;
+}
+
+.bigfuture-card {
+  display: grid;
+  grid-template-columns: var(--bigfuture-image-column) 1fr;
+  width: 100%;
+  height: var(--bigfuture-card-height);
+  overflow: hidden;
+  border: 1px solid #e7ecf4;
+  border-radius: var(--card-radius);
+  box-shadow: 0 1px 6px rgba(24, 30, 40, 0.1);
+}
+
+.bigfuture-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 32%;
+  background: #f1f4fa;
+}
+
+.bigfuture-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 30px 18px 14px;
+}
+
+.bigfuture-content h3 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.bigfuture-content p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #18202d;
+}
+
+.bigfuture-button {
+  align-self: flex-start;
+  width: fit-content;
+  min-width: 0;
+  padding: 9px 18px;
+  border: 1px solid #2b3444;
+  border-radius: 999px;
+  background: #ffffff;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* =========================================================
+   Build stamp (fixed footer text)
+   ========================================================= */
+.build-stamp {
+  position: fixed;
+  right: 14px;
+  bottom: 8px;
+  margin: 0;
+  font-size: 10px;
+  color: #717b8c;
+}
+
+/* =========================================================
+   Responsive: medium desktop / tablet
+   ========================================================= */
+@media (max-width: 1300px) {
+  .user-name {
+    font-size: 15px;
+  }
+
+  .welcome-inner h1 {
+    font-size: 32px;
+  }
+
+  .segment {
+    padding: 6px 14px;
+  }
+
+  .helper-link {
+    font-size: 14px;
+  }
+
+  .empty-card h3 {
+    font-size: 20px;
+  }
+
+  .empty-card p {
+    font-size: 15px;
+  }
+
+  .bigfuture-content h3 {
+    font-size: 16px;
+  }
+}
+
+/* =========================================================
+   Responsive: tablet / narrow content
+   ========================================================= */
+@media (max-width: 920px) {
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .section-header-left {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .welcome-inner h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  .helper-link {
+    font-size: 16px;
+  }
+
+  .empty-card {
+    width: 100%;
+    min-height: unset;
+    padding: 20px 16px;
+  }
+
+  .empty-card h3 {
+    margin-bottom: 10px;
+    font-size: 22px;
+  }
+
+  .empty-card p {
+    font-size: 15px;
+  }
+
+  .bigfuture-card {
+    grid-template-columns: 1fr;
+  }
+
+  .bigfuture-image {
+    height: 190px;
+  }
+
+  .bigfuture-content {
+    padding: 14px;
+  }
+
+  .bigfuture-content h3 {
+    margin-bottom: 8px;
+    font-size: 22px;
+  }
+
+  .bigfuture-content p {
+    margin-bottom: 14px;
+    font-size: 14px;
+  }
+
+  .bigfuture-button {
+    padding: 9px 16px;
+    font-size: 13px;
+  }
+}
+
+/* =========================================================
+   Responsive: mobile
+   ========================================================= */
+@media (max-width: 700px) {
+  .practice-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .practice-card {
+    width: 100%;
+    min-height: 180px;
+    padding-top: 20px;
+  }
+
+  .practice-card h3 {
+    font-size: 24px;
+  }
+}
+/* Global variables */
+:root {
+  --container-width: 936px;
+  --header-height: 88px;
+  --hero-height: 102px;
+  --section-gap: 16px;
+  --internal-gap: 25px;
+  --your-tests-height: 285px;
+  --practice-height: 320px;
+  --explore-height: 360px;
+  --empty-card-width: 450px;
+  --empty-card-height: 170px;
+  --practice-card-width: 240px;
+  --practice-card-height: 210px;
+  --card-radius: 12px;
+  --page-bg: #ffffff;
+  --text-dark: #151d2a;
+  --link-blue: #1848b6;
+  --hero-bg: #edf3ff;
+  --hero-text: #355db7;
+  --segment-active: #4b5058;
+  --card-shadow: 0 1px 7px rgba(20, 25, 35, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Base page layout */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--page-bg);
+  color: var(--text-dark);
+  min-height: 100vh;
+}
+
+/* Header */
+.top-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--hero-bg);
+  height: var(--header-height);
+  border-bottom: 0;
+  z-index: 1000;
+}
+
+.header-inner,
+.welcome-inner,
+.main-content {
+  width: min(936px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.header-inner {
+  height: 100%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  width: 128px;
+  height: auto;
+  display: block;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-name {
+  font-size: 19px;
+  line-height: 1.1;
+  color: #111111;
+  font-weight: 600;
+  opacity: 1;
+  filter: none;
+}
+
+.user-avatar {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
+/* Hero welcome section */
+.welcome-band {
+  width: 100%;
+  min-height: var(--hero-height);
+  background: var(--hero-bg);
+  margin-top: var(--header-height);
+}
+
+.welcome-inner {
+  min-height: var(--hero-height);
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.welcome-inner h1 {
+  margin: 0;
+  color: var(--hero-text);
+  font-weight: 400;
+  font-size: 34px;
+  letter-spacing: 0;
+  line-height: 1.15;
+  opacity: 0.9;
+}
+
+/* Shared section layout */
+.main-content {
+  margin: 22px auto 70px;
+  padding: 0;
+}
+
+.content-section {
+  margin-bottom: var(--section-gap);
+}
+
+.your-tests-section {
+  min-height: var(--your-tests-height);
+}
+
+.practice-section {
+  min-height: var(--practice-height);
+}
+
+.explore-section {
+  min-height: var(--explore-height);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--internal-gap);
+  margin-bottom: 22px;
+}
+
+.section-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.1;
+  color: #141d2b;
+  letter-spacing: -0.2px;
+  font-weight: 700;
+}
+
+/* Segmented controls */
+.segmented-control {
+  display: inline-flex;
+  align-items: center;
+  width: 175px;
+  height: 35px;
+  border: 1px solid #afb7c3;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.segment {
+  border: 0;
+  background: transparent;
+  color: #252b37;
+  min-height: 35px;
+  flex: 1 1 0;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.segment + .segment {
+  border-left: 1px solid #c4cad4;
+}
+
+.segment.is-active {
+  background: var(--segment-active);
+  color: #fff;
+}
+
+/* Shared helper links */
+.helper-link {
+  color: var(--link-blue);
+  text-decoration: underline;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.card {
+  background: #fff;
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+
+/* Your Tests card */
+.empty-card {
+  width: min(100%, var(--empty-card-width));
+  min-height: var(--empty-card-height);
+  padding: 31px 28px 24px;
+  text-align: center;
+}
+
+.empty-card h3 {
+  margin: 0 0 12px;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.empty-card p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 400;
+}
+
+.empty-card a {
+  color: var(--link-blue);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.empty-card strong {
+  font-weight: 700;
+  color: #111111;
+}
+
+/* Practice cards */
+.practice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, var(--practice-card-width));
+  gap: 16px;
+}
+
+.practice-card {
+  width: var(--practice-card-width);
+  height: var(--practice-card-height);
+  padding: 14px 10px 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-icon {
+  width: 74px;
+  height: auto;
+  margin: 0 auto 18px;
+  display: block;
+}
+
+.practice-card h3 {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.12;
+  color: #11151f;
+}
+
+/* BigFuture section */
+.section-header-simple {
+  margin-bottom: 16px;
+}
+
+.bigfuture-card {
+  width: 100%;
+  height: 210px;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  overflow: hidden;
+  border: 1px solid #e7ecf4;
+  border-radius: var(--card-radius);
+  box-shadow: 0 1px 6px rgba(24, 30, 40, 0.1);
+}
+
+.bigfuture-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 32%;
+  display: block;
+  background: #f1f4fa;
+}
+
+.bigfuture-content {
+  padding: 30px 18px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.bigfuture-content h3 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.bigfuture-content p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #18202d;
+}
+
+.bigfuture-button {
+  border: 1px solid #2b3444;
+  background: #fff;
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  width: fit-content;
+  min-width: 0;
+  align-self: flex-start;
+}
+
+/* Footer/build stamp */
+.build-stamp {
+  position: fixed;
+  right: 14px;
+  bottom: 8px;
+  margin: 0;
+  color: #717b8c;
+  font-size: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1300px) {
+  .user-name {
+    font-size: 15px;
+  }
+
+  .welcome-inner h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 34px;
+  }
+
+  .segment {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+
+  .helper-link {
+    font-size: 14px;
+  }
+
+  .empty-card h3 {
+    font-size: 20px;
+  }
+
+  .empty-card p {
+    font-size: 15px;
+  }
+
+  .practice-card h3 {
+    font-size: 19px;
+  }
+
+  .bigfuture-content h3 {
+    font-size: 16px;
+  }
+
+  .bigfuture-content p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 920px) {
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .section-header-left {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .welcome-inner h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  .helper-link {
+    font-size: 16px;
+  }
+
+  .empty-card {
+    width: 100%;
+    min-height: unset;
+    padding: 20px 16px;
+  }
+
+  .empty-card h3 {
+    margin-bottom: 10px;
+    font-size: 22px;
+  }
+
+  .empty-card p {
+    font-size: 15px;
+  }
+
+  .bigfuture-card {
+    grid-template-columns: 1fr;
+  }
+
+  .bigfuture-image {
+    height: 190px;
+  }
+
+  .bigfuture-content {
+    padding: 14px;
+  }
+
+  .bigfuture-content h3 {
+    margin-bottom: 8px;
+    font-size: 22px;
+  }
+
+  .bigfuture-content p {
+    margin-bottom: 14px;
+    font-size: 14px;
+  }
+
+  .bigfuture-button {
+    padding: 9px 16px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 700px) {
+  .practice-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .practice-card {
+    width: 100%;
+    min-height: 180px;
+    padding-top: 20px;
+  }
+
+  .practice-card h3 {
+    font-size: 24px;
+  }
+}
