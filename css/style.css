@@ -3,24 +3,24 @@
    ========================================================= */
 :root {
   /* Page/frame sizing */
-  --container-width: 936px;      /* Max content width for header, hero, main */
-  --header-height: 88px;         /* Fixed top header height */
-  --hero-height: 102px;          /* Welcome band height */
+  --container-width: 1180px;     /* Max content width for header, hero, main */
+  --header-height: 100px;        /* Fixed top header height */
+  --hero-height: 120px;          /* Welcome band height */
 
   /* Vertical rhythm */
-  --section-gap: 16px;           /* Space between major content sections */
+  --section-gap: 8px;            /* Space between major content sections */
   --internal-gap: 25px;          /* Gap inside section headers */
 
   /* Section minimum heights */
-  --your-tests-height: 285px;
-  --practice-height: 320px;
+  --your-tests-height: 250px;
+  --practice-height: 285px;
   --explore-height: 360px;
 
   /* Card sizing */
-  --empty-card-width: 450px;
+  --empty-card-width: 38%;
   --empty-card-height: 170px;
-  --practice-card-width: 240px;
-  --practice-card-height: 210px;
+  --practice-card-width: 20.4%;
+  --practice-card-height: 209px;
   --card-radius: 12px;
 
   /* Colors */
@@ -54,7 +54,7 @@ body {
 .header-inner,
 .welcome-inner,
 .main-content {
-  width: min(var(--container-width), calc(100% - 48px));
+  width: min(var(--container-width), calc(100% - 740px));
   margin: 0 auto;
 }
 
@@ -121,7 +121,7 @@ body {
 
 .welcome-inner h1 {
   margin: 0;
-  font-size: 34px;
+  font-size: 41px;
   line-height: 1.15;
   font-weight: 400;
   color: var(--hero-text);
@@ -132,11 +132,11 @@ body {
    5) Main content shell
    ========================================================= */
 .main-content {
-  margin: 22px auto 70px;
+  margin: 16px auto 70px;
 }
 
 .content-section {
-  margin-bottom: var(--section-gap);
+  margin-bottom: 40px;
 }
 
 .your-tests-section {
@@ -159,7 +159,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: var(--internal-gap);
-  margin-bottom: 22px;
+  margin-bottom: 26px;
 }
 
 .section-header-left {
@@ -170,7 +170,7 @@ body {
 
 h2 {
   margin: 0;
-  font-size: 34px;
+  font-size: 39px;
   line-height: 1.1;
   font-weight: 700;
   letter-spacing: -0.2px;
@@ -183,8 +183,8 @@ h2 {
 .segmented-control {
   display: inline-flex;
   align-items: center;
-  width: 175px;
-  height: 35px;
+  width: 200px;
+  height: 40px;
   overflow: hidden;
   border: 1px solid #afb7c3;
   border-radius: 10px;
@@ -193,7 +193,7 @@ h2 {
 
 .segment {
   flex: 1 1 0;
-  min-height: 35px;
+  min-height: 40px;
   padding: 0 14px;
   border: 0;
   background: transparent;
@@ -236,6 +236,7 @@ h2 {
 .empty-card {
   width: min(100%, var(--empty-card-width));
   min-height: var(--empty-card-height);
+  margin-left: 0;
   padding: 31px 28px 24px;
   text-align: center;
 }
@@ -270,8 +271,9 @@ h2 {
    ========================================================= */
 .practice-grid {
   display: grid;
-  grid-template-columns: repeat(2, var(--practice-card-width));
+  grid-template-columns: repeat(2, minmax(0, var(--practice-card-width)));
   gap: 16px;
+  margin-left: 0;
 }
 
 .practice-card {
@@ -279,7 +281,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: var(--practice-card-width);
+  width: 100%;
   height: var(--practice-card-height);
   padding: 14px 10px 12px;
   text-align: center;
@@ -308,9 +310,9 @@ h2 {
 
 .bigfuture-card {
   display: grid;
-  grid-template-columns: 290px 1fr;
+  grid-template-columns: 406px 1fr;
   width: 100%;
-  height: 210px;
+  height: 310px;
   overflow: hidden;
   border: 1px solid #e7ecf4;
   border-radius: var(--card-radius);
@@ -322,7 +324,8 @@ h2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 32%;
+  object-fit: cover;
+  object-position: center 20%;
   background: #f1f4fa;
 }
 
@@ -330,19 +333,21 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 12px;
-  padding: 30px 18px 14px;
+  gap: 22px;
+  padding: 34px 34px 34px;
+  align-self: start;
 }
 
 .bigfuture-content h3 {
   margin: 0;
-  font-size: 17px;
+  font-size: 26px;
   line-height: 1.2;
+  font-weight: 700;
 }
 
 .bigfuture-content p {
   margin: 0;
-  font-size: 13px;
+  font-size: 20px;
   line-height: 1.4;
   color: #18202d;
 }
@@ -351,11 +356,11 @@ h2 {
   align-self: flex-start;
   width: fit-content;
   min-width: 0;
-  padding: 9px 18px;
+  padding: 12px 24px;
   border: 1px solid #2b3444;
   border-radius: 999px;
   background: #fff;
-  font-size: 12px;
+  font-size: 20px;
   line-height: 1;
   font-weight: 600;
   cursor: pointer;
@@ -486,7 +491,7 @@ h2 {
 
   .practice-card {
     width: 100%;
-    min-height: 180px;
+    height: 180px;
     padding-top: 20px;
   }
 
